@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'booking_app',
     'planning_app',
     'social_app',
+    'frontpage_app',
     
     'django.contrib.admin',
     'django.contrib.auth',
