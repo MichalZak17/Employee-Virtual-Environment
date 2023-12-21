@@ -9,8 +9,9 @@ https://docs.djangoproject.com/en/5.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
-
+import os
 import sentry_sdk
+from pathlib import Path
 
 sentry_sdk.init(
     dsn="https://860d22c40cd9dee9d92edb345cc20bd5@o4506430678433792.ingest.sentry.io/4506430679810048",
@@ -18,11 +19,8 @@ sentry_sdk.init(
     profiles_sample_rate=1.0,
 )
 
-from pathlib import Path
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
@@ -89,9 +87,13 @@ WSGI_APPLICATION = 'employee_virtual_environment.wsgi.application'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+    "default": {
+        "ENGINE": "django.db.backends.mysql",
+        "NAME": os.environ["DB_NAME"],
+        "USER": os.environ["DB_USER"],
+        "PASSWORD": os.environ["DB_USER_PASSWORD"],
+        "HOST": os.environ["DB_HOST"],
+        "PORT": "3306",
     }
 }
 
