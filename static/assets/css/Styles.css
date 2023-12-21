@@ -1,0 +1,22 @@
+.dropdown-item:hover, .dropdown-item:focus {
+  color: black !important;
+  background-color: var(--bs-dropdown-link-hover-bg) !important;
+}
+
+.dropdown-menu.show {
+  min-width: 230px;
+}
+
+.btn.custom-explore:hover, .btn.custom-explore:focus {
+  color: #fff !important;
+  background-color: #5d9bdf !important;
+  border-color: #5d9bdf !important;
+  transition: background-color 0.4s ease-in-out;
+}
+
+.btn.custom-explore {
+  color: #5d9bdf !important;
+  border-color: #5d9bdf !important;
+  border-radius: 12px;
+}
+
