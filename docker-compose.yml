@@ -2,7 +2,7 @@ version: '4.0.1-alpha build 4'
 
 services:
   django:
-    image: michalzak17/toolbox:v4.0.1-alpha
+    image: virtualenvironment.azurecr.io/django:v0.0.1
     build: .
     ports:
       - "8000:8000"

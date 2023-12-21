@@ -10,8 +10,10 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 import os
-import sentry_sdk
 from pathlib import Path
+
+import sentry_sdk
+from sentry_sdk.integrations.django import DjangoIntegration
 
 sentry_sdk.init(
     dsn="https://860d22c40cd9dee9d92edb345cc20bd5@o4506430678433792.ingest.sentry.io/4506430679810048",
@@ -31,7 +33,9 @@ SECRET_KEY = 'django-insecure-f00k+*2f0wg#hf=&+a=d(_8v&7la2tkl3=+ymf2lyxob48d#l^
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
+
+CSRF_TRUSTED_ORIGINS = ["https://" + os.environ["WEBSITE_HOSTNAME"]]
 
 
 # Application definition
