@@ -612,3 +612,33 @@
 }
 
 /*team section end*/
+
+.product-desk {
+  position: absolute;
+  right: 10%;
+  bottom: -30%;
+  width: 500px; /* wider to resemble a desk */
+  height: 300px; /* shorter height for a desk */
+  background-color: #333; /* original device color */
+  border-radius: 21px; /* keeping original border radius */
+  transform: rotate(130deg); /* original rotation */
+}
+
+.product-desk::before {
+  position: absolute;
+  top: 80%; /* adjust to create a thin tabletop-like appearance */
+  right: 10px;
+  bottom: 10px;
+  left: 10px;
+  content: "";
+  background-color: rgba(255, 255, 255, .1); /* original shade for desk surface */
+  border-radius: 5px;
+}
+
+.product-desk-2 {
+  top: -25%;
+  right: auto;
+  bottom: 0;
+  left: 5%;
+  background-color: #e5e5e5; /* original device color for the second desk */
+}
