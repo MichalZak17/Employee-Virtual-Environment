@@ -61,9 +61,18 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/contact-us/">Contact Us</a>
                     </li>
-                    <button class="btn btn-primary" type="button" style="--bs-primary: #525c7a;--bs-primary-rgb: 82,92,122;text-shadow: 0px 0px;background: #ffffff;color: #000000 !important;border-style: none;border-color: rgba(255,255,240,0);font-size: 18px;">
-                        Log In
-                    </button>
+                    {% if user.is_authenticated %}
+                        <form action="/logout/" method="post">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-primary" style="--bs-primary: #525c7a;--bs-primary-rgb: 82,92,122;text-shadow: 0px 0px;background: #ffffff;color: #000000 !important;border-style: none;border-color: rgba(255,255,240,0);font-size: 18px;">
+                                Logout
+                            </button>
+                        </form>
+                    {% else %}
+                        <a href="/login/" class="btn btn-primary" style="--bs-primary: #525c7a;--bs-primary-rgb: 82,92,122;text-shadow: 0px 0px;background: #ffffff;color: #000000 !important;border-style: none;border-color: rgba(255,255,240,0);font-size: 18px;">
+                            Log In
+                        </a>
+                    {% endif %}
                 </ul>
               </div>
             <script>
