@@ -63,6 +63,11 @@
                                     {% endif %}
                                 </div>
                                 <button class="btn btn-primary btn-block text-white btn-user" type="submit">Log In</button>
+                                {% if login_failed %}
+                                <div class="alert alert-danger mt-3" role="alert">
+                                    Login failed. Please check your username and password.
+                                </div>
+                                {% endif %}
                             </form>
                             <hr>
                             <p style="font-family: 'Roboto';font-size: 14px;color: rgb(195,196,204);">For prompt and professional assistance, please use the official email address provided to you during the registration process. Our dedicated team is here to support you and ensure a smooth login experience. Thank you for choosing our services, and we are ready to assist you with any login-related queries you may have.</p>
