@@ -41,12 +41,9 @@ CSRF_TRUSTED_ORIGINS = ["https://" + os.environ["WEBSITE_HOSTNAME"]]
 # Application definition
 
 INSTALLED_APPS = [
-    'admin_app',
-    'analysis_app',
-    'booking_app',
-    'planning_app',
-    'social_app',
     'frontpage_app',
+    'frontend',
+    'backend',
     
     'django.contrib.admin',
     'django.contrib.auth',
@@ -146,3 +143,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_REDIRECT_URL = "/"
 LOGOUT_REDIRECT_URL = "/"
+
+AUTH_USER_MODEL = 'backend.CustomUser'

@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class AnalysisAppConfig(AppConfig):
+class FrontendConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'analysis_app'
+    name = 'frontend'
