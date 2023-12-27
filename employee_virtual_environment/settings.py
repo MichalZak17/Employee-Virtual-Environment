@@ -41,9 +41,9 @@ CSRF_TRUSTED_ORIGINS = ["https://" + os.environ["WEBSITE_HOSTNAME"]]
 # Application definition
 
 INSTALLED_APPS = [
-    'frontpage_app',
     'frontend',
     'backend',
+    'staff_module',
     
     'django.contrib.admin',
     'django.contrib.auth',
