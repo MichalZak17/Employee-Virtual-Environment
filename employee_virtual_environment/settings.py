@@ -19,6 +19,7 @@ sentry_sdk.init(
     dsn="https://860d22c40cd9dee9d92edb345cc20bd5@o4506430678433792.ingest.sentry.io/4506430679810048",
     traces_sample_rate=1.0,
     profiles_sample_rate=1.0,
+    environment="development",
 )
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
