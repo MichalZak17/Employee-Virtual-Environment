@@ -1,0 +1,457 @@
+{% load static %}
+<!DOCTYPE html>
+<html data-bs-theme="light" lang="en" style="font-family: Roboto, sans-serif;">
+
+<head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+        <title>Employee Virtual Environment</title>
+        <link rel="stylesheet" href="{% static 'assets/bootstrap/css/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i&amp;display=swap">
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto&amp;display=swap">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Condensed&amp;display=swap">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Flex&amp;display=swap">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Mono&amp;display=swap">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Serif&amp;display=swap">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab&amp;display=swap">
+        <link rel="stylesheet" href="{% static 'assets/css/Hero-Clean-images.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/css/Lightbox-Gallery-No-Gutters-baguetteBox.min.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/css/Navbar-Centered-Brand-icons.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/css/Styles.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/css/responsive.css' %}"/>
+        
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+
+<body style="font-family: Roboto, sans-serif;">
+        <div class="hero_area">
+
+                <div class="hero_bg_box">
+                    <div class="bg_img_box">
+                        <img src="{% static 'assets/img/background-vector.png' %}" alt="">
+                    </div>
+                </div>
+        
+                <!-- header section strats -->
+                <header class="header_section">
+                    <div class="container-fluid">
+                        <nav class="navbar navbar-expand-lg custom_nav-container ">
+                            <a class="navbar-brand" href="/">
+                                <span>
+                                        Employee Virtual Environment
+                                </span>
+                            </a>
+    
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class=""></span>
+              </button>
+    
+              <div class="collapse navbar-collapse" id="navbarSupportedContent" style="font-size: 18px;font-family: Roboto, sans-serif;">
+                <ul class="navbar-nav  ">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/product/">Product</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/use-cases/">Use Cases</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/contact-us/">Contact Us</a>
+                    </li>
+                    {% if user.is_authenticated %}
+                        <form action="/logout/" method="post">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-primary" style="--bs-primary: #525c7a;--bs-primary-rgb: 82,92,122;text-shadow: 0px 0px;background: #ffffff;color: #000000 !important;border-style: none;border-color: rgba(255,255,240,0);font-size: 18px;">
+                                Logout
+                            </button>
+                        </form>
+                    {% else %}
+                        <a href="/login/" class="btn btn-primary" style="--bs-primary: #525c7a;--bs-primary-rgb: 82,92,122;text-shadow: 0px 0px;background: #ffffff;color: #000000 !important;border-style: none;border-color: rgba(255,255,240,0);font-size: 18px;">
+                            Log In
+                        </a>
+                    {% endif %}
+                </ul>
+              </div>
+            <script>
+                document.addEventListener("DOMContentLoaded", function() {
+                    const navbarToggle = document.querySelector(".navbar-toggler");
+                    const navbarCollapse = document.querySelector(".navbar-collapse");
+
+                    navbarToggle.addEventListener("click", function() {
+                        navbarCollapse.classList.toggle("show");
+                    });
+                });
+            </script>
+            </nav>
+          </div>
+        </header>
+        <section class="slider_section ">
+          <div id="customCarousel1" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <div class="container ">
+                  <div class="row">
+                    <div class="col-md-6 ">
+                      <div class="detail-box">
+                        <h1>
+                          UNLOCK THE FUTURE OF ARTIFICIAL INTELLIGENCE
+                        </h1>
+                        <p style="font-size: 16px;">
+                            Supercharge productivity with cutting-edge AI software. Streamline operations, empower your team, and stay ahead in an ever-evolving digital landscape. Embrace innovation today!
+                        </p>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                    <div class="img-box" style="width: 80%; margin-left: 50px;">
+                        <img src="{% static 'assets/img/1.jpeg' %}" style="border-radius: 15px;" alt="">
+                    </div>
+                    </div>
+                  </div>
+                </div>
+              </div>              
+            </div>
+          </div>    
+        </section>
+      </div>
+
+    <div class="container py-4 py-xl-5" style="padding-top: 30px !important;padding-bottom: 30px !important;">
+        <div class="row gy-4 gy-md-0">
+            <div class="col-md-6">
+                <div class="p-xl-5 m-xl-5"><img class="rounded img-fluid w-100 fit-cover" style="min-height: 300px;border-radius: 13px !important;" src="{% static 'assets/img/Main%20page/amy-hirschi-szrJ3wjzOMg-unsplash.jpg' %}"></div>
+            </div>
+            <div class="col-md-6 d-md-flex align-items-md-center">
+                <div style="max-width: 350px;">
+                    <h2 class="text-uppercase fw-bold" style="font-family: Roboto, sans-serif;color: var(--bs-emphasis-color);">Desk Booking in Two Simple Clicks</h2>
+                    <p class="my-3" style="font-family: Roboto, sans-serif;">With just two clicks, you can easily reserve a desk or additional resources such as docking stations, phone booths, and parking spots, all through a single convenient website.</p><a class="btn btn-outline-primary btn-lg custom-explore" role="button" href="#" style="font-family: Roboto, sans-serif;">Explore our Desk Booking feature</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container py-4 py-xl-5" style="padding-top: 30px !important;padding-bottom: 30px !important;">
+        <div class="row gy-4 gy-md-0">
+            <div class="col-md-6 text-center text-md-start d-flex d-sm-flex d-md-flex justify-content-center align-items-center justify-content-md-start align-items-md-center justify-content-xl-center">
+                <div style="max-width: 350px;">
+                    <h2 class="text-uppercase fw-bold" style="color: rgb(0,0,0);">Organize Your Workweek for Optimal Results</h2>
+                    <p class="my-3">Easily determine who is in the office and who is working remotely. Share your own work location and receive notifications when colleagues intend to visit the office. The great advantage? All of this is seamlessly manageable through a single integrated website.</p><a class="btn btn-outline-primary btn-lg custom-explore" role="button" href="#">Explore our Week Planning tool</a>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="p-xl-5 m-xl-5"><img class="rounded img-fluid w-100 fit-cover" style="min-height: 300px;border-radius: 13px !important;" src="{% static 'assets/img/Main%20page/tyler-franta-iusJ25iYu1c-unsplash%20(1).jpg' %}"></div>
+            </div>
+        </div>
+    </div>
+    <div class="container py-4 py-xl-5" style="padding-top: 30px !important;padding-bottom: 30px !important;">
+        <div class="row gy-4 gy-md-0">
+            <div class="col-md-6">
+                <div class="p-xl-5 m-xl-5"><img class="rounded img-fluid w-100 fit-cover" style="min-height: 300px;border-radius: 13px !important;" src="{% static 'assets/img/Main%20page/priscilla-du-preez-tAnrp8P51tY-unsplash.jpg' %}"></div>
+            </div>
+            <div class="col-md-6 d-md-flex align-items-md-center">
+                <div style="max-width: 350px;">
+                    <h2 class="text-uppercase fw-bold" style="font-family: Roboto, sans-serif;color: var(--bs-emphasis-color);">Discover, Improve, Expand</h2>
+                    <p class="my-3" style="font-family: Roboto, sans-serif;">Gain comprehensive insights into office use and attendance, enhancing the workplace experience for your staff. Utilize Eve as your all-in-one platform to gather vital real estate data, enabling you to make well-informed decisions without any guesswork.</p><a class="btn btn-outline-primary btn-lg custom-explore" role="button" href="#" style="font-family: Roboto, sans-serif;">Discover Analytics</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="photo-gallery py-4 py-xl-5" style="padding-top: 24px !important;padding-bottom: 0px !important;">
+        <div class="container-fluid p-0">
+            <div class="row g-0 mb-5" style="margin-bottom: 80px !important;">
+                <div class="col-md-8 col-xl-6 text-center mx-auto">
+                    <h2 style="color: rgb(0,0,0);">Official Technology Sponsor</h2>
+                    <p class="w-lg-50" style="color: rgb(133, 135, 150);">Our Official Technology Sponsor's support is crucial for Eve project's success, helping us innovate and improve workplace management.</p><img class="img-fluid" src="{% static 'assets/img/Partners/MS-Azure_logo_horiz_c-gray_rgb.png' %}" style="max-width: 80%;">
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="container text-white bg-primary border rounded border-0 p-4 p-lg-5 py-4 py-xl-5" style="background: linear-gradient(157deg, #589ee1, #d442a9);font-family: Roboto, sans-serif;border-radius: 15px !important;">
+        <div class="row mb-5">
+            <div class="col-md-8 col-xl-6 text-center mx-auto">
+                <h2 class="text-white" style="font-family: Roboto, sans-serif;">Redefine Work Management with AI</h2>
+                <p class="w-lg-50" style="font-family: Roboto, sans-serif;">Discover how Eve transforms office and schedule management, streamlining processes and enhancing team satisfaction with tailored AI solutions.</p>
+            </div>
+        </div>
+        <div class="row gy-4 row-cols-1 row-cols-md-2 row-cols-xl-3">
+            <div class="col">
+                <div class="d-flex">
+                    <div class="bs-icon-sm bs-icon-rounded bs-icon-semi-white text-primary d-flex flex-shrink-0 justify-content-center align-items-center d-inline-block mb-3 bs-icon"><svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="1em" viewBox="0 0 24 24" width="1em" fill="currentColor" style="color: rgba(255,255,255,0.90);font-size: 22px;">
+                            <rect fill="none" height="24" width="24"></rect>
+                            <g>
+                                <path d="M18.04,7.99l-0.63-1.4l-1.4-0.63c-0.39-0.18-0.39-0.73,0-0.91l1.4-0.63l0.63-1.4c0.18-0.39,0.73-0.39,0.91,0l0.63,1.4 l1.4,0.63c0.39,0.18,0.39,0.73,0,0.91l-1.4,0.63l-0.63,1.4C18.78,8.38,18.22,8.38,18.04,7.99z M21.28,12.72L20.96,12 c-0.18-0.39-0.73-0.39-0.91,0l-0.32,0.72L19,13.04c-0.39,0.18-0.39,0.73,0,0.91l0.72,0.32L20.04,15c0.18,0.39,0.73,0.39,0.91,0 l0.32-0.72L22,13.96c0.39-0.18,0.39-0.73,0-0.91L21.28,12.72z M16.24,14.37l1.23,0.93c0.4,0.3,0.51,0.86,0.26,1.3l-1.62,2.8 c-0.25,0.44-0.79,0.62-1.25,0.42l-1.43-0.6c-0.2,0.13-0.42,0.26-0.64,0.37l-0.19,1.54c-0.06,0.5-0.49,0.88-0.99,0.88H8.38 c-0.5,0-0.93-0.38-0.99-0.88L7.2,19.59c-0.22-0.11-0.43-0.23-0.64-0.37l-1.43,0.6c-0.46,0.2-1,0.02-1.25-0.42l-1.62-2.8 c-0.25-0.44-0.14-0.99,0.26-1.3l1.23-0.93C3.75,14.25,3.75,14.12,3.75,14s0-0.25,0.01-0.37L2.53,12.7c-0.4-0.3-0.51-0.86-0.26-1.3 l1.62-2.8c0.25-0.44,0.79-0.62,1.25-0.42l1.43,0.6c0.2-0.13,0.42-0.26,0.64-0.37l0.19-1.54C7.45,6.38,7.88,6,8.38,6h3.23 c0.5,0,0.93,0.38,0.99,0.88l0.19,1.54c0.22,0.11,0.43,0.23,0.64,0.37l1.43-0.6c0.46-0.2,1-0.02,1.25,0.42l1.62,2.8 c0.25,0.44,0.14,0.99-0.26,1.3l-1.23,0.93c0.01,0.12,0.01,0.24,0.01,0.37S16.25,14.25,16.24,14.37z M13,14c0-1.66-1.34-3-3-3 s-3,1.34-3,3s1.34,3,3,3S13,15.66,13,14z"></path>
+                            </g>
+                        </svg></div>
+                    <div class="px-3">
+                        <h4 class="text-white" style="font-family: Roboto, sans-serif;">Automated Scheduling</h4>
+                        <p style="font-family: Roboto, sans-serif;">Automate and optimize work schedules with Eve, reducing planning time and focusing on more strategic tasks.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="d-flex">
+                    <div class="bs-icon-sm bs-icon-rounded bs-icon-semi-white text-primary d-flex flex-shrink-0 justify-content-center align-items-center d-inline-block mb-3 bs-icon"><svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="1em" viewBox="0 0 24 24" width="1em" fill="currentColor" style="color: rgba(255,255,255,0.90);font-size: 22px;">
+                            <rect fill="none" height="24" width="24"></rect>
+                            <g>
+                                <path d="M19.88,18.47c0.48-0.77,0.75-1.67,0.69-2.66c-0.13-2.15-1.84-3.97-3.97-4.2c-2.72-0.3-5.02,1.81-5.02,4.47 c0,2.49,2.01,4.5,4.49,4.5c0.88,0,1.7-0.26,2.39-0.7l2.41,2.41c0.39,0.39,1.03,0.39,1.42,0v0c0.39-0.39,0.39-1.03,0-1.42 L19.88,18.47z M16.08,18.58c-1.38,0-2.5-1.12-2.5-2.5c0-1.38,1.12-2.5,2.5-2.5s2.5,1.12,2.5,2.5 C18.58,17.46,17.46,18.58,16.08,18.58z M15.72,10.08c-0.74,0.02-1.45,0.18-2.1,0.45l-0.55-0.83l-3.08,5.01 c-0.36,0.58-1.17,0.64-1.61,0.13l-2.12-2.47l-3.06,4.9c-0.31,0.49-0.97,0.62-1.44,0.28l0,0c-0.42-0.31-0.54-0.89-0.26-1.34 l3.78-6.05c0.36-0.57,1.17-0.63,1.61-0.12L9,12.5l3.18-5.17c0.38-0.62,1.28-0.64,1.68-0.03L15.72,10.08z M18.31,10.58 c-0.64-0.28-1.33-0.45-2.05-0.49L20.8,2.9c0.31-0.49,0.97-0.61,1.43-0.27l0,0c0.43,0.31,0.54,0.9,0.26,1.34L18.31,10.58z"></path>
+                            </g>
+                        </svg></div>
+                    <div class="px-3">
+                        <h4 class="text-white" style="font-family: Roboto, sans-serif;">Dynamic Office Space Management</h4>
+                        <p style="font-family: Roboto, sans-serif;">Eve dynamically allocates workspaces, adapting to immediate needs for efficient office space utilization.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="d-flex">
+                    <div class="bs-icon-sm bs-icon-rounded bs-icon-semi-white text-primary d-flex flex-shrink-0 justify-content-center align-items-center d-inline-block mb-3 bs-icon"><svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 24 24" width="1em" fill="currentColor" style="font-size: 24px;color: rgba(255,255,255,0.90);">
+                            <path d="M0 0h24v24H0z" fill="none"></path>
+                            <path d="M19.46 10a1 1 0 0 0-.07 1 7.55 7.55 0 0 1 .52 1.81 8 8 0 0 1-.69 4.73 1 1 0 0 1-.89.53H5.68a1 1 0 0 1-.89-.54A8 8 0 0 1 13 6.06a7.69 7.69 0 0 1 2.11.56 1 1 0 0 0 1-.07 1 1 0 0 0-.17-1.76A10 10 0 0 0 3.35 19a2 2 0 0 0 1.72 1h13.85a2 2 0 0 0 1.74-1 10 10 0 0 0 .55-8.89 1 1 0 0 0-1.75-.11z"></path>
+                            <path d="M10.59 12.59a2 2 0 0 0 2.83 2.83l5.66-8.49z"></path>
+                        </svg></div>
+                    <div class="px-3">
+                        <h4 class="text-white" style="font-family: Roboto, sans-serif;">Enhancing Employee Efficiency</h4>
+                        <p style="font-family: Roboto, sans-serif;">Enhance employee satisfaction and efficiency with Eve, adapting to team needs for a balanced and effective work environment.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="d-flex">
+                    <div class="bs-icon-sm bs-icon-rounded bs-icon-semi-white text-primary d-flex flex-shrink-0 justify-content-center align-items-center d-inline-block mb-3 bs-icon"><svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 24 24" width="1em" fill="currentColor" style="color: rgba(255,255,255,0.90);font-size: 20px;">
+                            <path d="M11.19 1.36l-7 3.11C3.47 4.79 3 5.51 3 6.3V11c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V6.3c0-.79-.47-1.51-1.19-1.83l-7-3.11c-.51-.23-1.11-.23-1.62 0zM12 11.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"></path>
+                        </svg></div>
+                    <div class="px-3">
+                        <h4 class="text-white" style="font-family: Roboto, sans-serif;">Security</h4>
+                        <p style="font-family: Roboto, sans-serif;">Data security is our top priority. Eve ensures the protection of your employees' information, letting you focus on core activities</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="d-flex">
+                    <div class="bs-icon-sm bs-icon-rounded bs-icon-semi-white text-primary d-flex flex-shrink-0 justify-content-center align-items-center d-inline-block mb-3 bs-icon"><svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 24 24" width="1em" fill="currentColor" style="font-size: 22px;color: rgba(255,255,255,0.90);">
+                            <path d="M17 16l-4-4V8.82c1.35-.49 2.26-1.89 1.93-3.46-.25-1.18-1.23-2.12-2.42-2.32C10.63 2.73 9 4.17 9 6c0 1.3.84 2.4 2 2.82V12l-4 4H4c-.55 0-1 .45-1 1v3c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-2.05l4-4.2 4 4.2V20c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-3c0-.55-.45-1-1-1h-3z"></path>
+                        </svg></div>
+                    <div class="px-3">
+                        <h4 class="text-white" style="font-family: Roboto, sans-serif;">Automated Scheduling</h4>
+                        <p>Leverage Eve's AI to tailor your work processes to unique business needs, ensuring flexible task and schedule management.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="d-flex">
+                    <div class="bs-icon-sm bs-icon-rounded bs-icon-semi-white text-primary d-flex flex-shrink-0 justify-content-center align-items-center d-inline-block mb-3 bs-icon"><svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="1em" viewBox="0 0 24 24" width="1em" fill="currentColor" style="font-size: 22px;color: rgba(255,255,255,0.90);">
+                            <g>
+                                <rect fill="none" height="24" width="24"></rect>
+                                <circle cx="12" cy="3.5" fill="none" r=".75"></circle>
+                                <circle cx="12" cy="3.5" fill="none" r=".75"></circle>
+                                <circle cx="12" cy="3.5" fill="none" r=".75"></circle>
+                                <path d="M19,3h-4.18C14.4,1.84,13.3,1,12,1S9.6,1.84,9.18,3H5C4.86,3,4.73,3.01,4.6,3.04C4.21,3.12,3.86,3.32,3.59,3.59 c-0.18,0.18-0.33,0.4-0.43,0.64C3.06,4.46,3,4.72,3,5v14c0,0.27,0.06,0.54,0.16,0.78c0.1,0.24,0.25,0.45,0.43,0.64 c0.27,0.27,0.62,0.47,1.01,0.55C4.73,20.99,4.86,21,5,21h14c1.1,0,2-0.9,2-2V5C21,3.9,20.1,3,19,3z M10.3,14.88L10.3,14.88 c-0.39,0.39-1.03,0.39-1.42,0l-2.17-2.17c-0.39-0.39-0.39-1.02,0-1.41l2.17-2.17c0.39-0.39,1.03-0.39,1.42,0l0,0 c0.39,0.39,0.39,1.02,0,1.41L8.83,12l1.46,1.46C10.68,13.85,10.69,14.49,10.3,14.88z M12,4.25c-0.41,0-0.75-0.34-0.75-0.75 S11.59,2.75,12,2.75s0.75,0.34,0.75,0.75S12.41,4.25,12,4.25z M13.7,14.88L13.7,14.88c-0.39-0.39-0.39-1.02,0-1.41L15.17,12 l-1.47-1.47c-0.39-0.39-0.39-1.02,0-1.41l0,0c0.39-0.39,1.03-0.39,1.42,0l2.17,2.17c0.39,0.39,0.39,1.02,0,1.41l-2.17,2.17 C14.73,15.27,14.09,15.27,13.7,14.88z"></path>
+                            </g>
+                        </svg></div>
+                    <div class="px-3">
+                        <h4 class="text-white" style="font-family: Roboto, sans-serif;">Smooth Integration</h4>
+                        <p style="font-family: Roboto, sans-serif;">Easily integrate Eve with your existing tools for a swift, disruption-free implementation and enhanced workflow efficiency.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container py-4 py-xl-5" style="padding-top: 80px !important;">
+        <div class="row mb-5">
+            <div class="col-md-8 col-xl-6 text-center mx-auto">
+                <h2>Efficient Office Management</h2>
+                <p class="w-lg-50">Experience streamlined booking and attendance management. Our system offers easy desk booking, centralized updates on office occupancy, and interactive floor plans. Embrace a seamless start to your workday with our quick check-in options.</p>
+            </div>
+        </div>
+        <div class="row gy-4 row-cols-1 row-cols-md-2 row-cols-xl-3">
+            <div class="col">
+                <div class="text-center d-flex flex-column align-items-center align-items-xl-center">
+                    <div class="bs-icon-lg bs-icon-rounded bs-icon-primary d-flex flex-shrink-0 justify-content-center align-items-center d-inline-block mb-3 bs-icon lg" style="background: rgb(157,107,194);border-color: rgba(255,255,255,0);"><svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="1em" viewBox="0 0 24 24" width="1em" fill="currentColor">
+                            <g>
+                                <path d="M0,0h24v24H0V0z" fill="none"></path>
+                            </g>
+                            <g>
+                                <path d="M16,3H5C3.9,3,3,3.9,3,5v14c0,1.1,0.9,2,2,2h14c1.1,0,2-0.9,2-2V8L16,3z M7,7h5v2H7V7z M17,17H7v-2h10V17z M17,13H7v-2h10 V13z M15,9V5l4,4H15z"></path>
+                            </g>
+                        </svg></div>
+                    <div class="px-3">
+                        <h4>Office Community Updates</h4>
+                        <p>Find out who's in the office and what's happening there. Keep employees engaged with essential updates on office events and presence.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="text-center d-flex flex-column align-items-center align-items-xl-center">
+                    <div class="bs-icon-lg bs-icon-rounded bs-icon-primary d-flex flex-shrink-0 justify-content-center align-items-center d-inline-block mb-3 bs-icon lg" style="background: rgb(179,91,184);border-color: rgba(255,255,255,0);"><svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 24 24" width="1em" fill="currentColor">
+                            <path d="M0 0h24v24H0z" fill="none"></path>
+                            <path d="M20.5 3l-.16.03L15 5.1 9 3 3.36 4.9c-.21.07-.36.25-.36.48V20.5c0 .28.22.5.5.5l.16-.03L9 18.9l6 2.1 5.64-1.9c.21-.07.36-.25.36-.48V3.5c0-.28-.22-.5-.5-.5zM15 19l-6-2.11V5l6 2.11V19z"></path>
+                        </svg></div>
+                    <div class="px-3">
+                        <h4>Interactive Floor Plans</h4>
+                        <p>Utilize the interactive floor plan for a comprehensive overview of all available seating arrangements and their current occupants.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="text-center d-flex flex-column align-items-center align-items-xl-center">
+                    <div class="bs-icon-lg bs-icon-rounded bs-icon-primary d-flex flex-shrink-0 justify-content-center align-items-center d-inline-block mb-3 bs-icon lg" style="background: rgb(201,73,173);border-color: rgba(255,255,255,0);"><svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="1em" viewBox="0 0 24 24" width="1em" fill="currentColor">
+                            <rect fill="none" height="24" width="24"></rect>
+                            <path d="M22,7h-9v2h9V7z M22,15h-9v2h9V15z M5.54,11L2,7.46l1.41-1.41l2.12,2.12l4.24-4.24l1.41,1.41L5.54,11z M5.54,19L2,15.46 l1.41-1.41l2.12,2.12l4.24-4.24l1.41,1.41L5.54,19z"></path>
+                        </svg></div>
+                    <div class="px-3">
+                        <h4>Seamless Check-Ins</h4>
+                        <p>Enhance your experience with our easy check-in options! Use QR codes or a straightforward link for a hassle-free beginning to your workday, eliminating wasted space and no-shows.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container py-4 py-xl-5">
+        <div class="row mb-4 mb-lg-5">
+            <div class="col-md-8 col-xl-6 text-center mx-auto">
+                <h2 style="color: var(--bs-emphasis-color);">Our Team</h2>
+                <p class="w-lg-50" style="color: rgb(133,135,150);">Meet the dedicated individuals behind our project, each bringing their unique expertise to create innovative solutions that shape the future.</p>
+            </div>
+        </div>
+        <div class="row gy-4 row-cols-2 row-cols-md-4">
+            <div class="col">
+                <div class="card border-0 shadow-none">
+                    <div class="card-body text-center d-flex flex-column align-items-center p-0"><img class="rounded-circle mb-3 fit-cover" width="130" height="130" src="https://cdn.bootstrapstudio.io/placeholders/1400x800.png">
+                        <h5 class="fw-bold text-primary card-title mb-0" style="color: rgb(163,103,191) !important;"><strong>Michał Żak</strong></h5>
+                        <p class="text-muted card-text mb-2">Project Lead</p>
+                        <ul class="list-inline fs-6 text-muted w-100 mb-0">
+                            <li class="list-inline-item text-center">
+                                <div class="d-flex flex-column align-items-center"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-facebook">
+                                        <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"></path>
+                                    </svg></div>
+                            </li>
+                            <li class="list-inline-item text-center">
+                                <div class="d-flex flex-column align-items-center"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-twitter">
+                                        <path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z"></path>
+                                    </svg></div>
+                            </li>
+                            <li class="list-inline-item text-center">
+                                <div class="d-flex flex-column align-items-center"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-instagram">
+                                        <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"></path>
+                                    </svg></div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card border-0 shadow-none">
+                    <div class="card-body text-center d-flex flex-column align-items-center p-0"><img class="rounded-circle mb-3 fit-cover" width="130" height="130" src="https://cdn.bootstrapstudio.io/placeholders/1400x800.png">
+                        <h5 class="fw-bold text-primary card-title mb-0" style="color: rgb(176,93,185) !important;">Krzysztof Siuda</h5>
+                        <p class="text-muted card-text mb-2">Research Supervisor</p>
+                        <ul class="list-inline fs-6 text-muted w-100 mb-0">
+                            <li class="list-inline-item text-center">
+                                <div class="d-flex flex-column align-items-center"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-facebook">
+                                        <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"></path>
+                                    </svg></div>
+                            </li>
+                            <li class="list-inline-item text-center">
+                                <div class="d-flex flex-column align-items-center"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-twitter">
+                                        <path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z"></path>
+                                    </svg></div>
+                            </li>
+                            <li class="list-inline-item text-center">
+                                <div class="d-flex flex-column align-items-center"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-instagram">
+                                        <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"></path>
+                                    </svg></div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card border-0 shadow-none">
+                    <div class="card-body text-center d-flex flex-column align-items-center p-0"><img class="rounded-circle mb-3 fit-cover" width="130" height="130" src="https://cdn.bootstrapstudio.io/placeholders/1400x800.png">
+                        <h5 class="fw-bold text-primary card-title mb-0" style="color: rgb(205,71,172) !important;">Artur Karpiński</h5>
+                        <p class="text-muted card-text mb-2">Database Administrator</p>
+                        <ul class="list-inline fs-6 text-muted w-100 mb-0">
+                            <li class="list-inline-item text-center">
+                                <div class="d-flex flex-column align-items-center"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-facebook">
+                                        <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"></path>
+                                    </svg></div>
+                            </li>
+                            <li class="list-inline-item text-center">
+                                <div class="d-flex flex-column align-items-center"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-twitter">
+                                        <path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z"></path>
+                                    </svg></div>
+                            </li>
+                            <li class="list-inline-item text-center">
+                                <div class="d-flex flex-column align-items-center"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-instagram">
+                                        <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"></path>
+                                    </svg></div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card border-0 shadow-none">
+                    <div class="card-body text-center d-flex flex-column align-items-center p-0"><img class="rounded-circle mb-3 fit-cover" width="130" height="130" src="https://cdn.bootstrapstudio.io/placeholders/1400x800.png">
+                        <h5 class="fw-bold text-primary card-title mb-0" style="color: rgb(176,93,185) !important;">Magdalena Słobodzian</h5>
+                        <p class="text-muted card-text mb-2">PR &amp; Outreach Supervisor</p>
+                        <ul class="list-inline fs-6 text-muted w-100 mb-0">
+                            <li class="list-inline-item text-center">
+                                <div class="d-flex flex-column align-items-center"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-facebook">
+                                        <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"></path>
+                                    </svg></div>
+                            </li>
+                            <li class="list-inline-item text-center">
+                                <div class="d-flex flex-column align-items-center"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-twitter">
+                                        <path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z"></path>
+                                    </svg></div>
+                            </li>
+                            <li class="list-inline-item text-center">
+                                <div class="d-flex flex-column align-items-center"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-instagram">
+                                        <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"></path>
+                                    </svg></div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="newsletter-subscribe py-4 py-xl-5">
+        <div class="container">
+            <div class="row mb-2">
+                <div class="col-md-8 col-xl-6 text-center mx-auto">
+                    <h2 class="display-6 fw-bold" style="color: var(--bs-emphasis-color);">Stay Informed with Our Newsletter</h2>
+                    <p class="text-muted" style="color: var(--bs-body-color) !important;">Subscribe to receive the latest updates and insights straight to your inbox.</p>
+                </div>
+            </div>
+            <form class="d-flex justify-content-center flex-wrap" method="post" onsubmit="return false;">
+                <div class="mb-3"><input class="form-control" type="email" name="email" placeholder="Your Email" style="border-radius: 10.6px;"></div>
+                <div class="mb-3"><button class="btn btn-primary ms-2" type="submit" style="background: rgb(190,82,179);border-color: rgba(255,255,255,0);">Subscribe </button></div>
+            </form>
+        </div>
+    </section>
+    <footer class="text-center">
+        <div class="container text-muted py-4 py-lg-5">
+            <ul class="list-inline">
+                <li class="list-inline-item me-4"><a href="https://www.linkedin.com/in/michalzak000/"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-linkedin">
+                            <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"></path>
+                        </svg></a></li>
+                <li class="list-inline-item me-4"><a href="https://github.com/MichalZak17"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-github">
+                            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path>
+                        </svg></a></li>
+                <li class="list-inline-item"><a href="https://www.instagram.com/michalzak__/"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-instagram">
+                            <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"></path>
+                        </svg></a></li>
+            </ul>
+            <p class="mb-0">Copyright © 2023 Michał Żak</p>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static 'assets/js/bs-init.js' %}"></script>
+    <script src="{% static 'assets/js/Lightbox-Gallery-No-Gutters-baguetteBox.min.js' %}"></script>
+    <script src="{% static 'assets/js/Lightbox-Gallery-No-Gutters-Lightbox-Gallery.js' %}"></script>
+    <script src="{% static 'assets/js/theme.js' %}"></script>
+</body>
+
+</html>

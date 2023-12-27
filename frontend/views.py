@@ -9,20 +9,19 @@ def redirect_authenticated_user(view_func):
 
 @redirect_authenticated_user
 def index(request):
-    return render(request, 'frontpage_app/index.html')
+    return render(request, 'frontend/home.html')
 
 @redirect_authenticated_user
 def product(request):
-    return render(request, 'frontpage_app/product.html')
+    return render(request, 'frontend/product.html')
 
 @redirect_authenticated_user
 def use_cases(request):
-    return render(request, 'frontpage_app/use_cases.html')
+    return render(request, 'frontend/use_cases.html')
 
 @redirect_authenticated_user
 def contact_us(request):
-    return render(request, 'frontpage_app/contact_us.html')
+    return render(request, 'frontend/contact_us.html')
 
-# Create your views here.
 def dashboard(request):
     return render(request, 'frontend/dashboard.html')
