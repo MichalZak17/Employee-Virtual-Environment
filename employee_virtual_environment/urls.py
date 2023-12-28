@@ -23,6 +23,7 @@ urlpatterns = [
     path('django_admin/', admin.site.urls),
     
     path('', include('frontend.urls')),
+    path('admin/', include('staff_module.urls')),
 
     path('', include('django.contrib.auth.urls')),
 ]
