@@ -48,7 +48,9 @@
 					<hr class="sidebar-divider my-0" />
 					<ul class="navbar-nav text-light" id="accordionSidebar">
 						<li class="nav-item"
-							><a class="nav-link" href="/admin/dashboard/"
+							><a
+								class="nav-link {% if request.path == '/admin/dashboard/' %}active{% endif %}"
+								href="/admin/dashboard/"
 								><svg
 									xmlns="http://www.w3.org/2000/svg"
 									enable-background="new 0 0 24 24"
