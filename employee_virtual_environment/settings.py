@@ -42,6 +42,7 @@ CSRF_TRUSTED_ORIGINS = ["https://" + os.environ["WEBSITE_HOSTNAME"]]
 # Application definition
 
 INSTALLED_APPS = [
+    "rest_framework",
     "frontend",
     "backend",
     "staff_module",
