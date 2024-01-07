@@ -113,7 +113,7 @@ class CustomUser(AbstractUser):
         verbose_name="Team",
     )
     office_floors = models.ManyToManyField(
-        Floor, blank=True, verbose_name="Office Floors"
+        Floor, blank=True, null=True, verbose_name="Office Floors"
     )
 
     def __str__(self):
@@ -168,7 +168,3 @@ class Teams(models.Model):
 
     def __str__(self):
         return self.name
-
-
-# Dokończyć sprawdzać wszystko i napisać skrypt do tworzenia użytkowników i pozoostałych rzeczy.
-# Dodać testy do wszystkiego.
