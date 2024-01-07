@@ -1,61 +1,62 @@
-from . import models
 from functools import wraps
-from django.shortcuts import render
-from django.http import JsonResponse, HttpRequest
+from django.shortcuts import redirect, render
 from django.contrib.auth.decorators import login_required
 
-
-def check_permission(func):
-    @wraps(func)
-    def wrapper(request, *args, **kwargs):
-        user = request.user
-        if user.is_authenticated and (
-            user.is_superuser
-            or user.is_staff
-            or user.user_is_administrator
-            or user.user_is_manager
-        ):
-            return func(request, *args, **kwargs)
-        else:
-            return JsonResponse({"error": "Permission denied"}, status=403)
-
-    return wrapper
+MANAGE_STAFF_URL = "manage-staff/"
 
 
-@login_required
-@check_permission
-def manage_staff(request):
-    return render(request, "staff_module/manage_staff.html")
+def __internal_role_classifier(user):
+    """
+    Redirects the user to the appropriate page based on their role.
+
+    Args:
+        user: The user object representing the logged-in user.
+
+    Returns:
+        A redirection to the appropriate page based on the user's role.
+    """
+    if user.is_superuser or user.is_administrator:
+        return redirect(f"{MANAGE_STAFF_URL}admin/")
+    elif user.is_manager:
+        return redirect(f"{MANAGE_STAFF_URL}manager/")
+    elif user.is_team_leader:
+        return redirect(f"{MANAGE_STAFF_URL}team-leader/")
+    else:  # TODO: redirect to employee page
+        pass
 
 
-@login_required
-@check_permission
-def get_all_languages(request):
-    languages = models.CustomUser.USER_LANGUAGE_CHOICES
-    return JsonResponse({"languages": languages})
+def staff_role_required(view_func):
+    """
+    Decorator that checks if the user is authenticated and has the staff role.
+    If the user is not authenticated, it redirects to the login page.
+    """
+
+    @wraps(view_func)
+    @login_required
+    def _wrapped_view(request, *args, **kwargs):
+        if not request.user.is_authenticated:
+            return redirect("/login/")
+
+        return __internal_role_classifier(request.user)
+
+    return _wrapped_view
 
 
-@login_required
-@check_permission
-def get_all_contracts(request):
-    contracts = models.CustomUser.USER_CONTRACT_CHOICES
-    return JsonResponse({"contracts": contracts})
+@staff_role_required
+def manage_staff_classifier(request):
+    return __internal_role_classifier(request.user)
 
 
-@login_required
-@check_permission
-def get_all_sites(request):
-    sites = models.CustomUser.USER_SITE_CHOICES
-    return JsonResponse({"sites": sites})
+@staff_role_required
+def manage_staff_admin(request):
+    return render(request, "staff_module/manage_staff_admin.html")
 
 
-@login_required
-@check_permission
-def create_user(request):
-    if not request.method == "POST":
-        return HttpRequest("Method not allowed", status=405)
+@staff_role_required
+def manage_staff_manager(request):
+    return render(request, "staff_module/manage_staff_manager.html")
 
-    user = request.user
 
-    if not user.user_team:
-        return HttpRequest("You don't have team", status=403)
+@staff_role_required
+def manage_staff_team_leader(request):
+    return render(request, "staff_module/manage_staff_team_leader.html")
