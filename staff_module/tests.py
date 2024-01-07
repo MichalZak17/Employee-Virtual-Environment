@@ -1,5 +1,8 @@
-from django.test import TestCase
+from django.test import TestCase, RequestFactory
+from django.contrib.auth.models import AnonymousUser, User
+
 from .models import Site, Floor, Language, CustomUser, Projects, Teams
+from .views import *
 
 
 class SiteModelTest(TestCase):
@@ -138,3 +141,81 @@ class TeamsModelTest(TestCase):
 
     def test_team_lead_assignment(self):
         self.assertEqual(self.team.team_lead, self.team_lead_user)
+
+
+# ==================== Views ====================
+
+
+class StaffRoleTests(TestCase):
+    def setUp(self):
+        self.factory = RequestFactory()
+
+        self.site = Site.objects.create(code="szz", name="Szczecin")
+        self.floor = Floor.objects.create(number=1, name="First Floor", site=self.site)
+        self.language = Language.objects.create(code="eng", name="English")
+
+        self.user = CustomUser.objects.create_user(
+            username="testuser",
+            email="test@example.com",
+            password="top_secret",
+            site=self.site,
+            language=self.language,
+            contract="civil",
+        )
+
+    def create_user_with_role(self, **kwargs):
+        unique_username = kwargs.get("username", "user") + "_test"
+
+        return CustomUser.objects.create_user(
+            username=unique_username,
+            email=kwargs.get("email", f"{unique_username}@example.com"),
+            password="top_secret",
+            site=self.site,
+            language=self.language,
+            contract="civil",
+            is_superuser=kwargs.get("is_superuser", False),
+            is_manager=kwargs.get("is_manager", False),
+            is_team_lead=kwargs.get("is_team_lead", False),
+            is_administrator=kwargs.get("is_administrator", False),
+        )
+
+    def test_manage_staff_classifier_superuser(self):
+        # Superuser is also an administrator. There is no other website for administrators.
+        superuser = self.create_user_with_role(username="superuser", is_superuser=True)
+        request = self.factory.get("/manage-staff/")
+        request.user = superuser
+
+        response = manage_staff_classifier(request)
+        self.assertEqual(response.url, "manage-staff/admin/")
+        self.assertEqual(response.status_code, 302)
+
+    def test_manage_staff_classifier_manager(self):
+        manager = self.create_user_with_role(username="manager", is_manager=True)
+        request = self.factory.get("/manage-staff/")
+        request.user = manager
+
+        response = manage_staff_classifier(request)
+        self.assertEqual(response.url, "manage-staff/manager/")
+        self.assertEqual(response.status_code, 302)
+
+    def test_manage_staff_classifier_team_lead(self):
+        team_lead = self.create_user_with_role(username="teamlead", is_team_lead=True)
+        request = self.factory.get("/manage-staff/")
+        request.user = team_lead
+
+        response = manage_staff_classifier(request)
+        self.assertEqual(response.url, "manage-staff/team-leader/")
+        self.assertEqual(response.status_code, 302)
+
+    def test_manage_staff_classifier_employee(self):
+        # TODO: redirect to employee page
+        pass
+
+    def test_manage_staff_unauthenticated(self):
+        request = self.factory.get("/manage-staff/")
+        request.user = AnonymousUser()
+
+        response = manage_staff_classifier(request)
+        self.assertEqual(response.status_code, 302)
+        self.assertIn("/login/", response.url)
+        self.assertIn("next=/manage-staff/", response.url)
