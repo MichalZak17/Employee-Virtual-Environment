@@ -19,7 +19,7 @@ def __internal_role_classifier(user):
         return redirect(f"{MANAGE_STAFF_URL}admin/")
     elif user.is_manager:
         return redirect(f"{MANAGE_STAFF_URL}manager/")
-    elif user.is_team_leader:
+    elif user.is_team_lead:
         return redirect(f"{MANAGE_STAFF_URL}team-leader/")
     else:  # TODO: redirect to employee page
         pass
