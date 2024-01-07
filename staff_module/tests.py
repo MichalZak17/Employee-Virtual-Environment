@@ -69,15 +69,35 @@ class LanguageModelTest(TestCase):
         self.assertEqual(str(language), "English (eng)")
 
 
+from django.test import TestCase
+from .models import Site, Floor, Language, CustomUser, Projects, Teams
+
+# Assuming other model tests (SiteModelTest, FloorModelTest, LanguageModelTest) are unchanged.
+
+
 class ProjectsModelTest(TestCase):
     def setUp(self):
-        Projects.objects.create(name="Project1", description="Project1 description")
+        # Create a language entry
+        eng_language = Language.objects.create(code="eng", name="English")
+
+        # Create a manager user with the language
+        self.manager_user = CustomUser.objects.create(
+            username="manager1", is_manager=True, language=eng_language
+        )
+
+        # Create projects
+        self.project1 = Projects.objects.create(
+            name="Project1", description="Project1 description"
+        )
+        self.project1.managers.add(self.manager_user)
+
         Projects.objects.create(name="Project2", description="")  # Empty description
         Projects.objects.create(name="Project3")  # No description provided
 
     def test_project_creation_with_full_details(self):
         project = Projects.objects.get(name="Project1")
         self.assertEqual(project.description, "Project1 description")
+        self.assertIn(self.manager_user, project.managers.all())
 
     def test_project_creation_with_empty_description(self):
         project = Projects.objects.get(name="Project2")
@@ -98,20 +118,20 @@ class ProjectsModelTest(TestCase):
 
 class TeamsModelTest(TestCase):
     def setUp(self):
+        # Create a project
         self.project = Projects.objects.create(
             name="Project1", description="Project1 description"
         )
+
+        # Create a language entry
         self.language = Language.objects.create(code="eng", name="English")
-        self.site = Site.objects.create(code="szz", name="Szczecin")
+
+        # Create a team lead user
         self.team_lead_user = CustomUser.objects.create(
-            username="teamlead",
-            language=self.language,
-            site=self.site,
-            is_team_lead=True,
+            username="teamlead", is_team_lead=True, language=self.language
         )
-        self.team_member_user = CustomUser.objects.create(
-            username="user1", language=self.language, site=self.site
-        )
+
+        # Create a team
         self.team = Teams.objects.create(
             name="Team1",
             description="Team1 Description",
@@ -119,12 +139,10 @@ class TeamsModelTest(TestCase):
             team_lead=self.team_lead_user,
         )
         self.team.languages.add(self.language)
-        self.team.members.add(self.team_member_user)
 
     def test_teams_creation_based_on_name(self):
         self.assertEqual(self.team.name, "Team1")
         self.assertEqual(self.team.description, "Team1 Description")
-        self.assertIn(self.team_member_user, self.team.members.all())
         self.assertIn(self.language, self.team.languages.all())
 
     def test_str_representation(self):

@@ -71,15 +71,13 @@ class CustomUser(AbstractUser):
     Represents a custom user in the system.
 
     Attributes:
-        workday (int): The workday of the user.
-        language (Language): The language preference of the user.
-        site (Site): The site where the user is located.
-        contract (str): The type of contract the user has.
-        is_manager (bool): Indicates whether the user is a manager.
-        is_team_lead (bool): Indicates whether the user is a team lead.
-        is_administrator (bool): Indicates whether the user is an administrator.
-        team (Teams): The team the user belongs to.
-        office_floors (QuerySet): The office floors the user has access to.
+        language (ForeignKey): The language preference of the user.
+        site (ForeignKey): The site where the user is located.
+        contract (CharField): The type of contract the user has.
+        is_manager (BooleanField): Indicates if the user is a manager.
+        is_team_lead (BooleanField): Indicates if the user is a team lead.
+        is_administrator (BooleanField): Indicates if the user is an administrator.
+        office_floors (ManyToManyField): The office floors assigned to the user.
     """
 
     USER_CONTRACT_CHOICES = [("civil", "Civil"), ("labour", "Labour"), ("b2b", "B2B")]
@@ -105,13 +103,6 @@ class CustomUser(AbstractUser):
     is_administrator = models.BooleanField(
         default=False, verbose_name="Is Administrator"
     )
-    team = models.ForeignKey(
-        "Teams",
-        on_delete=models.CASCADE,
-        null=True,
-        related_name="members",
-        verbose_name="Team",
-    )
     office_floors = models.ManyToManyField(
         Floor, blank=True, null=True, verbose_name="Office Floors"
     )
@@ -128,6 +119,7 @@ class Projects(models.Model):
         name (str): The name of the project.
         description (str): The description of the project.
         client (str): The client of the project.
+        managers (QuerySet): The managers of the project.
     """
 
     name = models.CharField(max_length=100, verbose_name="Project Name")
@@ -135,6 +127,12 @@ class Projects(models.Model):
         max_length=1000, blank=True, null=True, verbose_name="Project Description"
     )
     client = models.CharField(max_length=100, verbose_name="Client")
+    managers = models.ManyToManyField(
+        CustomUser,
+        blank=True,
+        related_name="managed_projects",
+        verbose_name="Project Managers",
+    )
 
     def __str__(self):
         return self.name
@@ -148,7 +146,7 @@ class Teams(models.Model):
         name (str): The name of the team.
         description (str): The description of the team.
         project (Projects): The project associated with the team.
-        team_lead (CustomUser): The team lead of the team.
+        team_lead (CustomUser): The team lead for the team.
         languages (QuerySet): The languages used by the team.
     """
 
@@ -157,9 +155,9 @@ class Teams(models.Model):
         max_length=1000, blank=True, null=True, verbose_name="Team Description"
     )
     project = models.ForeignKey(
-        Projects, on_delete=models.CASCADE, verbose_name="Project"
+        Projects, on_delete=models.CASCADE, related_name="teams", verbose_name="Project"
     )
-    team_lead = models.ForeignKey(
+    team_lead = models.OneToOneField(
         CustomUser, on_delete=models.CASCADE, verbose_name="Team Lead"
     )
     languages = models.ManyToManyField(
