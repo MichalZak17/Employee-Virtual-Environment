@@ -17,13 +17,12 @@ Including another URLconf
 from django.conf import settings
 from django.contrib import admin
 from django.urls import path, include
-from django.conf.urls.static  import static
+from django.conf.urls.static import static
 
 urlpatterns = [
-    path('django_admin/', admin.site.urls),
-    
-    path('', include('frontend.urls')),
-    path('admin/', include('staff_module.urls')),
-
-    path('', include('django.contrib.auth.urls')),
+    path("django_admin/", admin.site.urls),
+    path("manage-staff/", include("staff_module.urls")),
+    path("", include("frontend.urls")),
+    path("admin/", include("staff_module.urls")),
+    path("", include("django.contrib.auth.urls")),
 ]
