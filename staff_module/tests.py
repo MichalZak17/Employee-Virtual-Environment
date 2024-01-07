@@ -69,23 +69,14 @@ class LanguageModelTest(TestCase):
         self.assertEqual(str(language), "English (eng)")
 
 
-from django.test import TestCase
-from .models import Site, Floor, Language, CustomUser, Projects, Teams
-
-# Assuming other model tests (SiteModelTest, FloorModelTest, LanguageModelTest) are unchanged.
-
-
 class ProjectsModelTest(TestCase):
     def setUp(self):
-        # Create a language entry
         eng_language = Language.objects.create(code="eng", name="English")
 
-        # Create a manager user with the language
         self.manager_user = CustomUser.objects.create(
             username="manager1", is_manager=True, language=eng_language
         )
 
-        # Create projects
         self.project1 = Projects.objects.create(
             name="Project1", description="Project1 description"
         )
@@ -118,15 +109,12 @@ class ProjectsModelTest(TestCase):
 
 class TeamsModelTest(TestCase):
     def setUp(self):
-        # Create a project
         self.project = Projects.objects.create(
             name="Project1", description="Project1 description"
         )
 
-        # Create a language entry
         self.language = Language.objects.create(code="eng", name="English")
 
-        # Create a team lead user
         self.team_lead_user = CustomUser.objects.create(
             username="teamlead", is_team_lead=True, language=self.language
         )
